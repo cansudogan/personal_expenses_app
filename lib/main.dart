@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import './transaction.dart';
 
 void main() => runApp(MyApp());
@@ -50,19 +51,45 @@ class MyHomePage extends StatelessWidget {
           Column(
             children: transactions.map((tx) {
               return Card(
+                color: Colors.green[100],
                 child: Row(
                   children: <Widget>[
                     Container(
+                      margin: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 15,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple[200],
+                          width: 2,
+                        ),
+                      ),
+                      padding: EdgeInsets.all(10),
                       child: Text(
-                        tx.amount.toString(),
+                        '\$${tx.amount}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purple[200],
+                        ),
                       ),
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(tx.title),
+                        Text(
+                          tx.title,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                         Text(
                           tx.date.toString(),
-                        )
+                          style: TextStyle(color: Colors.grey),
+                        ),
                       ],
                     ),
                   ],
